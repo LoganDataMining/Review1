@@ -1,0 +1,45 @@
+```python
+def combinations(arr, r):
+    if r == 0:
+        return [[]]
+    if len(arr) == 0:
+        return []
+    return combinations(arr[1:], r - 1) + [comb + [arr[0]] for comb in combinations(arr[1:], r)]
+
+def permutations(arr, r):
+    if r == 0:
+        return [[]]
+    return [arr[i:i+1] + p for i in range(len(arr)) for p in permutations(arr[:i] + arr[i+1:], r - 1)]
+
+items = ['A', 'B', 'C', 'D', 'E']
+
+print("Combinations:")
+for r in range(1, len(items) + 1):
+    combs = combinations(items, r)
+    print(f"Combinations of length {r}:")
+    for comb in combs:
+        print(comb)
+
+print("\nPermutations:")
+for r in range(1, len(items) + 1):
+    perms = permutations(items, r)
+    print(f"Permutations of length {r}:")
+    for perm in perms:
+        print(perm)
+
+def profile_operations():
+    perm = permutations(items, len(items)) 
+    comb = combinations(items, 3)  
+    print("\n\n Performing profiling")
+
+import cProfile
+cProfile.run('profile_operations()')
+```
+
+
+      Cell In[1], line 1
+        jupyter nbconvert --to pdf your_notebook.ipynb
+                ^
+    SyntaxError: invalid syntax
+    
+
